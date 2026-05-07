@@ -1,0 +1,78 @@
+.values{
+    background: var(--main-color);
+    padding: adapt-vw(40, 60) 0;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 230px;
+        height: 100%;
+        background-image: url("../images/values-el.webp");
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @media (max-width: 1900px){
+            display: none;
+        }
+    }
+    &__inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        @media (max-width: 600px){
+            flex-direction: column;
+            align-items: center;
+            //Text
+            text-align: center;
+        }
+    }
+    &__title{
+        font-weight: 400;
+        font-size: adapt-vw(20, 30);
+        white-space: nowrap;
+        @media (max-width: 1600px){
+            font-size: adapt-vw(20, 28);
+        }
+    }
+    &__items{
+        max-width: 80%;
+        flex: 1 1 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: adapt-vw(26, 30);
+    }
+    &__item{
+        display: flex;
+        align-items: center;
+        gap: adapt-vw(12, 14);
+        @media (max-width: 1600px){
+            gap: adapt-vw(10, 12);
+        }
+        @media (max-width: 1400px){
+            flex: 1 1 calc((100% / 2) - #{adapt-vw(26, 30)});
+            justify-content: flex-end;
+        }
+        @media (max-width: 600px){
+            flex: 1 1 100%;
+            justify-content: center;
+        }
+        &-icon{
+            width: adapt-vw(34, 42);
+            flex-shrink: 0;
+            @media (max-width: 1600px){
+                width: adapt-vw(32, 38);
+            }
+        }
+        &-title{
+            font-weight: 500;
+            font-size: adapt-vw(14, 17);
+            @media (max-width: 1600px){
+                font-size: adapt-vw(14, 16);
+            }
+        }
+    }
+}

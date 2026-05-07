@@ -1,0 +1,52 @@
+@function to-vw($px, $base: 1920) {
+    @return ($px / $base) * 100vw;
+}
+
+@function adapt-vw($min-px, $max-px, $min-width: 320, $max-width: 1920) {
+    $slope: ($max-px - $min-px) / ($max-width - $min-width);
+    $y-axis-intersection: -$min-width * $slope + $min-px;
+
+    @return clamp(#{$min-px}px, #{$y-axis-intersection}px + #{$slope * 100}vw, #{$max-px}px);
+}
+
+@mixin if-parent($class) {
+    #{$class} & {
+        @content;
+    }
+}
+
+:root{
+    --main-color: #0030CF;
+    --gray-text-color: #606A76;
+    --black-color: #13171B;
+    --white-color: #FFFFFF;
+
+    --line-height-text: 1.4;
+
+    --heightHeader: 121px;
+    @media (max-width: 1600px){
+        --heightHeader: 117px;
+    }
+    @media (max-width: 1280px){
+        --heightHeader: 112px;
+    }
+    @media (max-width: 1200px){
+        --heightHeader: 106px;
+    }
+    @media (max-width: 800px){
+        --heightHeader: 97px;
+    }
+    @media (max-width: 600px){
+        --heightHeader: 90px;
+    }
+}
+
+.section-padding{
+    padding: adapt-vw(60, 100) 0;
+    &.pt-0{
+        padding-top: 0;
+    }
+    &.pb-0{
+        padding-bottom: 0;
+    }
+}

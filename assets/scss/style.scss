@@ -1,0 +1,23 @@
+@import './common/reset';
+
+//Dependencies
+@import './common/var';
+@import './common/fonts';
+@import './common/swiper-bundle.min';
+
+//Main
+@import './common/general';
+@import './common/header';
+@import './common/footer';
+
+//Modules
+@import './modules/typography';
+@import './modules/btn';
+
+//Front
+@import './pages/front/hero';
+@import './pages/front/principles';
+@import './pages/front/industries';
+@import './pages/front/platform';
+@import './pages/front/partnership';
+@import './pages/front/values';

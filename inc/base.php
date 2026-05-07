@@ -1,0 +1,36 @@
+<?php
+defined('ABSPATH') || exit;
+
+add_action('after_setup_theme', function() {
+    add_theme_support('title-tag');
+
+    add_theme_support('post-thumbnails');
+
+    add_theme_support('html5', [
+        'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'script', 'style'
+    ]);
+
+    register_nav_menus([
+        'header_menu' => 'Header menu',
+        'footer_menu_products' => 'Footer products menu',
+        'footer_menu_solutions' => 'Footer solutions menu',
+        'footer_menu_resources' => 'Footer resources menu',
+        'footer_menu_company' => 'Footer company menu',
+    ]);
+});
+
+show_admin_bar(false);
+
+add_filter('nav_menu_item_id', '__return_false');
+
+add_filter('nav_menu_css_class', function($classes, $item, $args) {
+    $important_classes = [
+        'current-menu-item', 
+        'current-menu-ancestor', 
+        'menu-item-has-children'
+    ];
+
+    $classes = array_intersect($classes, $important_classes);
+
+    return $classes;
+}, 10, 3);
