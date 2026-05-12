@@ -28,23 +28,19 @@
     
                         <input type="tel" name="phone" placeholder="Phone" required>
     
-                        <div class="select-wrapper">
-                            <select name="investment-focus-area">
-                                <option value="Investment focus area" disabled selected hidden>Investment focus area</option>
-                                <option value="Option 1">Option 1</option>
-                                <option value="Option 2">Option 2</option>
-                                <option value="Option 3">Option 3</option>
-                            </select>
-                        </div>
+                        <select name="investment-focus-area">
+                            <option value="Investment focus area" disabled selected hidden>Investment focus area</option>
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                        </select>
     
-                        <div class="select-wrapper">
-                            <select name="preferred-engagement">
-                                <option value="Preferred engagement" disabled selected hidden>Preferred engagement</option>
-                                <option value="Option 1">Option 1</option>
-                                <option value="Option 2">Option 2</option>
-                                <option value="Option 3">Option 3</option>
-                            </select>
-                        </div>
+                        <select name="preferred-engagement">
+                            <option value="Preferred engagement" disabled selected hidden>Preferred engagement</option>
+                            <option value="Option 1">Option 1</option>
+                            <option value="Option 2">Option 2</option>
+                            <option value="Option 3">Option 3</option>
+                        </select>
     
                         <textarea name="message" placeholder="Tell us about your enquiry"></textarea>
                     </div>

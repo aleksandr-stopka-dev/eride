@@ -14,9 +14,9 @@
 
                         <li class="industries__item">
                             <?php if ( $title = get_sub_field('title') ): ?>
-                            <h5 class="industries__item-title">
+                            <h3 class="industries__item-title">
                                 <?= esc_html($title); ?>
-                            </h5>
+                            </h3>
                             <?php endif; ?>
 
                             <?php if ( $caption = get_sub_field('caption') ): ?>

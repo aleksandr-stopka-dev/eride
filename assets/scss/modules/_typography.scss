@@ -7,7 +7,26 @@ h1, h2, h3, h4, h5, h6{
 .h2-text{
     font-family: 'Archivo Expanded';
     font-size: adapt-vw(30, 68);
-    @media (max-width: 1600px){
-        font-size: adapt-vw(30, 64);
+}
+
+.dscr-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: adapt-vw(24, 50);
+    //Text
+    font-size: adapt-vw(16, 20);
+    line-height: var(--line-height-text);
+    &.dscr-section-min{
+        gap: adapt-vw(24, 30);
+        p:not(:has(strong)){
+            font-size: adapt-vw(14, 16);
+        }
+    }
+    p:not(:has(strong)){
+        opacity: .6;
+    }
+    strong{
+        font-weight: 500;
     }
 }

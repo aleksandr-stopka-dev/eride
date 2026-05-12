@@ -4,6 +4,8 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="preload" href="<?= get_template_directory_uri(); ?>/assets/images/hero-poster.webp" as="image">
+
     <link rel="preload" href="<?= get_template_directory_uri() ?>/assets/fonts/Archivo/Archivo_Expanded-Light.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="<?= get_template_directory_uri() ?>/assets/fonts/Archivo/Archivo-VariableFont_wdth,wght.woff2" as="font" type="font/woff2" crossorigin>
 
@@ -34,7 +36,7 @@
     <?php wp_head(); ?>
 </head>
 <body>
-	<header class="header">
+	<header class="header <?= is_singular('platforms') ? 'is-platforms-single' : '' ?>">
 		<div class="container">
 			<div class="header__inner">
 				<div class="header__logo">
@@ -42,7 +44,7 @@
 						<a href="<?php echo esc_url( home_url('/') ); ?>">
 					<?php endif; ?>
                         <?php if ( $logo = get_field('logo', 'options') ): ?>
-                            <?= get_wp_srcset_img($logo, '', '175px'); ?>
+                            <?= get_wp_srcset_img($logo, '', '175px', false); ?>
                         <?php endif; ?>
 					<?php if ( !is_front_page() ) : ?>
 						</a>
@@ -52,26 +54,26 @@
                 <nav class="header__menu">
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="<?= home_url('our-platforms') ?>">
                                 Our Platforms
                             </a>
                         </li>
 
                         <li>
                             <a href="#">
-                                Industries
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                About Us
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
                                 Innovation and R&D
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                About
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                Partner With Us
                             </a>
                         </li>
 

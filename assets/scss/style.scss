@@ -13,6 +13,9 @@
 //Modules
 @import './modules/typography';
 @import './modules/btn';
+@import './modules/breadcrumbs';
+@import './modules/custom-select';
+@import './modules/platform-item';
 
 //Front
 @import './pages/front/hero';
@@ -21,3 +24,7 @@
 @import './pages/front/platform';
 @import './pages/front/partnership';
 @import './pages/front/values';
+
+//Platforms
+@import './pages/platforms/platforms-archive';
+@import './pages/platforms/platforms-single';

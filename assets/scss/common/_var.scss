@@ -2,11 +2,19 @@
     @return ($px / $base) * 100vw;
 }
 
-@function adapt-vw($min-px, $max-px, $min-width: 320, $max-width: 1920) {
-    $slope: ($max-px - $min-px) / ($max-width - $min-width);
-    $y-axis-intersection: -$min-width * $slope + $min-px;
+@function adapt-vw($min-px, $max-px, $laptop-px: null, $min-width: 320, $max-width: 1920) {
+    $breakpoint: 1600;
+    @if ($laptop-px == null) { $laptop-px: $max-px * 0.8; }
 
-    @return clamp(#{$min-px}px, #{$y-axis-intersection}px + #{$slope * 100}vw, #{$max-px}px);
+    $slope1: ($laptop-px - $min-px) / ($breakpoint - $min-width);
+    $y1: -$min-width * $slope1 + $min-px;
+    
+    $slope2: ($max-px - $laptop-px) / ($max-width - $breakpoint);
+    
+    $base: clamp(#{$min-px}px, calc(#{$y1}px + #{$slope1 * 100}vw), #{$laptop-px}px);
+    $addon: clamp(0px, calc((100vw - #{$breakpoint}px) * #{$slope2}), #{$max-px - $laptop-px}px);
+
+    @return calc(#{$base} + #{$addon});
 }
 
 @mixin if-parent($class) {
@@ -17,27 +25,30 @@
 
 :root{
     --main-color: #0030CF;
+    --main-bg-color: #00127A;
     --gray-text-color: #606A76;
     --black-color: #13171B;
     --white-color: #FFFFFF;
 
     --line-height-text: 1.4;
 
+    --spacing-70: #{adapt-vw(40, 70)};
+
     --heightHeader: 121px;
     @media (max-width: 1600px){
-        --heightHeader: 117px;
-    }
-    @media (max-width: 1280px){
         --heightHeader: 112px;
     }
+    @media (max-width: 1280px){
+        --heightHeader: 110px;
+    }
     @media (max-width: 1200px){
-        --heightHeader: 106px;
+        --heightHeader: 103px;
     }
     @media (max-width: 800px){
         --heightHeader: 97px;
     }
     @media (max-width: 600px){
-        --heightHeader: 90px;
+        --heightHeader: 93px;
     }
 }
 
@@ -49,4 +60,8 @@
     &.pb-0{
         padding-bottom: 0;
     }
+}
+
+.mb-spacing-70{
+    margin-bottom: var(--spacing-70);
 }

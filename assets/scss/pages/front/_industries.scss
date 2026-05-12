@@ -18,9 +18,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: adapt-vw(30, 70);
-        @media (max-width: 1600px){
-            gap: adapt-vw(30, 60);
-        }
         @media (max-width: 800px){
             max-width: 100%;
             width: 100%;
@@ -31,9 +28,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: adapt-vw(30, 70);
-        @media (max-width: 1600px){
-            gap: adapt-vw(30, 60);
-        }
     }
     &__item{
         display: flex;
@@ -43,18 +37,12 @@
         &-title{
             font-weight: 400;
             font-size: adapt-vw(18, 24);
-            @media (max-width: 1600px){
-                font-size: adapt-vw(18, 23);
-            }
         }
         &-caption{
             opacity: .6;
             //Text
             font-weight: 300;
             font-size: adapt-vw(16, 20);
-            @media (max-width: 1600px){
-                font-size: adapt-vw(16, 18);
-            }
         }
     }
     &__video{

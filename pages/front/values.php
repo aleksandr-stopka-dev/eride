@@ -16,9 +16,9 @@
                         <?php endif; ?>
 
                         <?php if ( $title = get_sub_field('text') ): ?>
-                        <h5 class="values__item-title">
+                        <h4 class="values__item-title">
                             <?= esc_html($title); ?>
-                        </h5>
+                        </h4>
                         <?php endif; ?>
                     </li>
                 <?php endwhile; ?>

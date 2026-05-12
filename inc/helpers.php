@@ -77,3 +77,24 @@ function get_wp_srcset_img($img, $class = '', $size_attr = '800px', $is_lazy = t
         $loading_attr
     );
 }
+
+add_action('pre_get_posts', function($query) {
+    if (!is_admin() && $query->is_main_query() && (is_post_type_archive('platforms') || is_tax('platform_cat'))) {
+        
+        $query->set('orderby', 'menu_order');
+        $query->set('order', 'ASC');
+
+        if (is_tax('platform_cat')) {
+            $tax_query = $query->get('tax_query') ?: [];
+            
+            $tax_query[] = [
+                'taxonomy'         => 'platform_cat',
+                'field'            => 'term_id',
+                'terms'            => get_queried_object_id(),
+                'include_children' => false,
+            ];
+
+            $query->set('tax_query', $tax_query);
+        }
+    }
+});

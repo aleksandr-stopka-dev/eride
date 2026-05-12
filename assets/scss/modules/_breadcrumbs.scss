@@ -1,0 +1,57 @@
+.breadcrumbs{
+    padding: adapt-vw(40, 70) 0;
+    position: relative;
+    z-index: 20;
+    &__list{
+        display: flex;
+        align-items: center;
+        gap: adapt-vw(28, 70);
+        overflow-x: auto;
+        //Text
+        font-family: 'Archivo Expanded';
+        font-weight: 500;
+        letter-spacing: -0.05em;
+        white-space: nowrap;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    &__home{
+        padding: adapt-vw(12, 14) adapt-vw(26, 30);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: adapt-vw(14, 16);
+        transition: .3s ease;
+        @media (any-hover: hover){
+            &:hover{
+                background: var(--white-color);
+                //Text
+                color: var(--black-color);
+                svg path{
+                    fill: var(--black-color);
+                }
+            }
+        }
+        svg{
+            flex-shrink: 0;
+            width: adapt-vw(23, 25);
+            height: auto;
+            transition: .3s ease;
+        }
+    }
+    &__item a{
+        transition: opacity .3s ease;
+        @media (any-hover: hover){
+            &:hover{
+                @media (any-hover: hover){
+                    &:hover{
+                        opacity: .8;
+                    }
+                }
+            }
+        }
+    }
+}

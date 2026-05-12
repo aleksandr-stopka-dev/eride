@@ -1,0 +1,10 @@
+.platforms-archive{
+    &__items{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(auto, 1fr));
+        gap: adapt-vw(20, 60);
+        @media (max-width: 800px){
+            grid-template-columns: repeat(1, minmax(auto, 1fr));
+        }
+    }
+}

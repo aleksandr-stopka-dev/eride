@@ -3,10 +3,29 @@
         padding-top: 20px;
     }
     &__inner{
+        position: relative;
+        z-index: 0;
+        //Style
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         gap: adapt-vw(26, 90);
+        &::before{
+            content: "";
+            position: absolute;
+            z-index: -1;
+            top: calc((#{adapt-vw(60, 100)} - 20px) * -1);
+            left: calc((240px + 66px) * -1);
+            width: adapt-vw(180, 258);
+            aspect-ratio: 4/5;
+            background-image: url("../images/partnership-el.svg");
+            background-position: bottom right;
+            background-repeat: no-repeat;
+            background-size: contain;
+            @media (max-width: 1600px){
+                display: none;
+            }
+        }
         @media (max-width: 800px){
             flex-direction: column;
         }
@@ -22,9 +41,6 @@
         flex-direction: column;
         align-items: flex-start;
         gap: adapt-vw(30, 70);
-        @media (max-width: 1600px){
-            gap: adapt-vw(30, 60);
-        }
         @media (max-width: 800px){
             max-width: 100%;
             width: 100%;
@@ -38,9 +54,6 @@
         gap: adapt-vw(18, 40);
         //Text
         line-height: var(--line-height-text);
-        @media (max-width: 1600px){
-            gap: adapt-vw(18, 30);
-        }
         p:not(:has(strong)){
             opacity: .6;
         }
@@ -73,31 +86,30 @@
                     flex: 1 1 100%;
                 }
             }
-            input, .select-wrapper{
-                flex: 1 1 calc((100% / 2) - #{adapt-vw(10, 14)});
-                @media (max-width: 600px){
+            input, .custom-select-wrapper{
+                flex: 0 1 calc(50% - (#{adapt-vw(10, 14)} / 2));
+                min-width: 0;
+                @media (max-width: 1000px){
                     flex: 1 1 100%;
                 }
             }
-            input, select, textarea{
+            input, .custom-select__trigger, textarea{
                 appearance: none;
-                background: rgba(255, 255, 255, 0.05);
+                background: #2A2A2A;
                 border-radius: 10px;
                 padding: adapt-vw(16, 22) adapt-vw(24, 30);
                 //Text
                 font-size: adapt-vw(14, 18);
-                color: var(--white-color);
-                @media (max-width: 1600px){
-                    padding: adapt-vw(16, 20) adapt-vw(24, 26);
-                    //Text
-                    font-size: adapt-vw(14, 16);   
-                }
+                color: var(--white-color);   
                 &::placeholder{
                     color: var(--white-color);
                 }
             }
-            .select-wrapper{
+            .custom-select-wrapper{
                 position: relative;
+                .custom-select__trigger span{
+                    padding-right: adapt-vw(14, 16);
+                }
                 &::after{
                     content: "";
                     position: absolute;
@@ -114,17 +126,13 @@
                         right: adapt-vw(24, 26);
                     }
                 }
-                select{
-                    width: 100%;
-                    cursor: pointer;
-                }
             }
             textarea{
                 flex: 1 1 100%;
-                height: adapt-vw(140, 180);
+                height: adapt-vw(120, 180);
                 resize: none;
                 @media (max-width: 1600px){
-                    height: adapt-vw(140, 170);
+                    // height: adapt-vw(120, 170);
                 }
             }
         }
@@ -132,9 +140,10 @@
             display: flex;
             align-items: center;
             gap: adapt-vw(12, 68);
-            @media (max-width: 600px){
+            @media (max-width: 1000px){
                 flex-direction: column;
                 align-items: flex-start;
+                gap: adapt-vw(12, 16);
             }
             button[type=submit]{
                 background: var(--white-color);
@@ -145,7 +154,7 @@
                 text-transform: none;
                 white-space: nowrap;
                 color: var(--black-color);
-                @media (max-width: 600px){
+                @media (max-width: 1000px){
                     width: 100%;
                 }
                 &::before{
@@ -168,9 +177,6 @@
             opacity: .6;
             //Text
             line-height: var(--line-height-text);
-            @media (max-width: 1600px){
-                font-size: adapt-vw(14, 15);
-            }
         }
     }
 }
