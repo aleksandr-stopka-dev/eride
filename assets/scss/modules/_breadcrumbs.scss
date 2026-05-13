@@ -5,7 +5,7 @@
     &__list{
         display: flex;
         align-items: center;
-        gap: adapt-vw(28, 70);
+        gap: adapt-vw(20, 70);
         overflow-x: auto;
         //Text
         font-family: 'Archivo Expanded';
@@ -25,6 +25,12 @@
         align-items: center;
         gap: adapt-vw(14, 16);
         transition: .3s ease;
+        @media (max-width: 600px){
+            padding: adapt-vw(12, 14) adapt-vw(18, 30);
+            gap: 0;
+            //Text
+            font-size: 0;
+        }
         @media (any-hover: hover){
             &:hover{
                 background: var(--white-color);

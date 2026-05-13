@@ -1,0 +1,15 @@
+.partner{
+    display: flex;
+    flex-direction: column;
+    .container{
+        display: flex;
+        flex: 1 1 auto;
+    }
+    &__inner{
+        display: flex;
+        flex-direction: column;
+    }
+    .content-media-bg{
+        mix-blend-mode: lighten;
+    }
+}

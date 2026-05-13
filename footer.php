@@ -5,7 +5,7 @@
                     <div class="footer__top">
                         <?php if ( $logo = get_field('logo_black', 'options') ): ?>
                         <div class="footer__logo">
-                            <?= get_wp_srcset_img($logo, '', '175px'); ?>
+                            <?= get_wp_srcset_img($logo, '', '170px'); ?>
                         </div>
                         <?php endif; ?>
     

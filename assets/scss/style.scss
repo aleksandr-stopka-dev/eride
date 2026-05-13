@@ -16,6 +16,8 @@
 @import './modules/breadcrumbs';
 @import './modules/custom-select';
 @import './modules/platform-item';
+@import './modules/content-media-bg';
+@import './modules/features-bottom';
 
 //Front
 @import './pages/front/hero';
@@ -25,6 +27,18 @@
 @import './pages/front/partnership';
 @import './pages/front/values';
 
+//About
+@import './pages/about/about';
+@import './pages/about/philosophy';
+@import './pages/about/mission';
+@import './pages/about/governance';
+@import './pages/about/compliance';
+@import './pages/about/infrastructure';
+
+//Partner
+@import './pages/partner/partner';
+
 //Platforms
 @import './pages/platforms/platforms-archive';
 @import './pages/platforms/platforms-single';
+@import './pages/platforms/platforms-service-single';

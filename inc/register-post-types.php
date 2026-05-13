@@ -23,6 +23,17 @@ add_action('init', function() {
         'labels'             => ['name' => 'Our Platforms', 'menu_name' => 'Platforms'],
         'rewrite'            => ['slug' => 'our-platforms/%platform_cat%', 'with_front' => false],
     ]);
+
+    register_post_type('innovation', [
+        'public'             => true,
+        'show_in_nav_menus'  => true,
+        'has_archive'        => 'innovation-research-development',
+        'menu_icon'          => 'dashicons-chart-line',
+        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'],
+        'show_in_rest'       => true,
+        'labels'             => ['name' => 'Innovation and R&D', 'menu_name' => 'Innovation'],
+        'rewrite'            => ['slug' => 'innovation-research-development'],
+    ]);
 });
 
 add_filter('post_type_link', function($post_link, $post) {

@@ -6,181 +6,262 @@ get_header();
 ?>
 
 <main>
-    <section class="about">
+    <section class="about content-media-bg-wrapper h-screen section-padding pt-0">
+        <?php eride_breadcrumbs(); ?>
+
         <div class="container">
             <div class="about__inner">
-                <div class="about__body">
-                    <h1 class="about__title h2-text">
-    
+                <div class="about__body body-content-wrapper">
+                    <?php if ( $title = get_field('title_about') ): ?>
+                    <h1 class="about__title h2-text mb-spacing-70">
+                        <?= wp_kses($title, ['br' => []]); ?>
                     </h1>
+                    <?php endif; ?>
     
+                    <?php if ( $dscr = get_field('description_about') ): ?>
                     <div class="dscr-section">
-                        
+                        <?= wp_kses_post($dscr); ?>
                     </div>
+                    <?php endif; ?>
                 </div>
 
-                <div class="about__media">
-                    <video autoplay loop muted playsinline poster="<?= get_template_directory_uri(); ?>/assets/images/about-poster.webp" preload="metadata" class="about__video">
-                        <source src="<?= get_template_directory_uri(); ?>/assets/video/about.webm" type="video/webm">
-                        <source src="<?= get_template_directory_uri(); ?>/assets/video/about.mp4" type="video/mp4">
-                    </video>
-                </div>
-            </div>
-
-            <div class="about__strengths">
-                <h2 class="about__strengths-title">
-
-                </h2>
-
-                <ul class="about__strengths-items">
-                    <li class="about__strengths-item">
-                        
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="philosophy">
-        <div class="container">
-            <div class="philosophy__inner">
-                <div class="philosophy__body">
-                    <h2 class="h2-text">
-
-                    </h2>
-
-                    <div class="dscr-section">
-
-                    </div>
-                </div>
-
-                <div class="philosophy__principles">
-                    <h3 class="philosophy__principles-title">
-
+                <?php if ( have_rows('strengths_about') ) : ?>
+                <div class="features-bottom section-padding pb-0">
+                    <?php if ( $title = get_field('title_strengths_about') ): ?>
+                    <h3 class="features-bottom__title">
+                        <?= esc_html($title); ?>
                     </h3>
+                    <?php endif; ?>
+                    
+                    <ul class="features-bottom__items">
+                        <?php while ( have_rows('strengths_about') ) : the_row(); ?>
+                            <li class="features-bottom__item">
+                                <?php if ( $icon = get_sub_field('icon') ): ?>
+                                <?= get_wp_srcset_img($icon, 'features-bottom__item-icon', '32px'); ?>
+                                <?php endif; ?>
 
-                    <ul class="philosophy__principles-items">
-                        <li class="philosophy__principles-item">
-
-                        </li>
+                                <div class="features-bottom__item-body">
+                                    <?php if ( $dscr = get_sub_field('text') ): ?>
+                                    <?= wp_kses_post($dscr); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
                     </ul>
                 </div>
+                <?php endif; ?>
             </div>
 
-            <video autoplay loop muted playsinline poster="<?= get_template_directory_uri(); ?>/assets/images/philosophy-poster.webp" preload="metadata" class="philosophy__video">
-                <source src="<?= get_template_directory_uri(); ?>/assets/video/philosophy.webm" type="video/webm">
-                <source src="<?= get_template_directory_uri(); ?>/assets/video/philosophy.mp4" type="video/mp4">
-            </video>
+            <?php if ( $media_data = get_field('media_about') ): ?>
+            <?php get_template_part('modules/content-media', null, $media_data); ?>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="mission">
+    <section class="philosophy content-media-bg-wrapper">
         <div class="container">
-            <div class="mission__inner">
-                <div class="mission__body">
-                    <h2 class="h2-text">
-
-                    </h2>
-
-                    <div class="dscr-section">
-
+            <div class="philosophy__inner section-screen section-padding">
+                <div class="section-screen__inner">
+                    <div class="philosophy__body body-content-wrapper">
+                        <?php if ( $title = get_field('title_philosophy') ): ?>
+                        <h2 class="h2-text mb-spacing-70">
+                            <?= wp_kses($title, ['br' => []]); ?>
+                        </h2>
+                        <?php endif; ?>
+    
+                        <?php if ( $dscr = get_field('description_philosophy') ): ?>
+                        <div class="dscr-section">
+                            <?= wp_kses_post($dscr); ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <div class="mission__focus">
-                    <h3 class="mission__focus-title">
-
+                <?php if ( have_rows('principles_philosophy') ) : ?>
+                <div class="features-bottom black-color section-padding pb-0">
+                    <?php if ( $title = get_field('title_principles_philosophy') ): ?>
+                    <h3 class="features-bottom__title">
+                        <?= esc_html($title); ?>
                     </h3>
+                    <?php endif; ?>
+                    
+                    <ul class="features-bottom__items">
+                        <?php while ( have_rows('principles_philosophy') ) : the_row(); ?>
+                            <li class="features-bottom__item">
+                                <?php if ( $icon = get_sub_field('icon') ): ?>
+                                <?= get_wp_srcset_img($icon, 'features-bottom__item-icon', '32px'); ?>
+                                <?php endif; ?>
 
-                    <ul class="mission__focus-items">
-                        <li class="mission__focus-item">
-
-                        </li>
+                                <div class="features-bottom__item-body">
+                                    <?php if ( $dscr = get_sub_field('text') ): ?>
+                                    <?= wp_kses_post($dscr); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
                     </ul>
                 </div>
+                <?php endif; ?>
             </div>
 
-            <video autoplay loop muted playsinline poster="<?= get_template_directory_uri(); ?>/assets/images/mission-poster.webp" preload="metadata" class="mission__video">
-                <source src="<?= get_template_directory_uri(); ?>/assets/video/mission.webm" type="video/webm">
-                <source src="<?= get_template_directory_uri(); ?>/assets/video/mission.mp4" type="video/mp4">
-            </video>
+            <?php if ( $media_data = get_field('media_philosophy') ): ?>
+            <?php get_template_part('modules/content-media', null, $media_data); ?>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="governance">
+    <section class="mission content-media-bg-wrapper">
         <div class="container">
-            <div class="governance__inner">
-                <div class="governance__body">
-                    <h2 class="h2-text">
-
-                    </h2>
-
-                    <div class="dscr-section">
-
+            <div class="mission__inner section-screen section-padding">
+                <div class="section-screen__inner">
+                    <div class="mission__body body-content-wrapper">
+                        <?php if ( $title = get_field('title_mission') ): ?>
+                        <h2 class="h2-text mb-spacing-70">
+                            <?= wp_kses($title, ['br' => []]); ?>
+                        </h2>
+                        <?php endif; ?>
+    
+                        <?php if ( $dscr = get_field('description_mission') ): ?>
+                        <div class="dscr-section">
+                            <?= wp_kses_post($dscr); ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <div class="governance__principles">
-                    <h3 class="governance__principles-title">
-
+                <?php if ( have_rows('focus_mission') ) : ?>
+                <div class="features-bottom section-padding pb-0">
+                    <?php if ( $title = get_field('title_focus_mission') ): ?>
+                    <h3 class="features-bottom__title">
+                        <?= esc_html($title); ?>
                     </h3>
+                    <?php endif; ?>
+                    
+                    <ul class="features-bottom__items">
+                        <?php while ( have_rows('focus_mission') ) : the_row(); ?>
+                            <li class="features-bottom__item">
+                                <?php if ( $icon = get_sub_field('icon') ): ?>
+                                <?= get_wp_srcset_img($icon, 'features-bottom__item-icon', '32px'); ?>
+                                <?php endif; ?>
 
-                    <ul class="governance__principles-items">
-                        <li class="governance__principles-item">
-                            <div class="governance__principles-item-body">
-                                <strong class="governance__principles-item-title">
-
-                                </strong>
-
-                                <span class="governance__principles-item-dscr">
-
-                                </span>
-                            </div>
-                        </li>
+                                <div class="features-bottom__item-body">
+                                    <?php if ( $dscr = get_sub_field('text') ): ?>
+                                    <?= wp_kses_post($dscr); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
                     </ul>
                 </div>
+                <?php endif; ?>
             </div>
+
+            <?php if ( $media_data = get_field('media_mission') ): ?>
+            <?php get_template_part('modules/content-media', null, $media_data); ?>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="compliance">
+    <section class="governance content-media-bg-wrapper">
         <div class="container">
-            <div class="compliance__inner">
-                <div class="compliance__body">
-                    <h2 class="h2-text">
-
-                    </h2>
-
-                    <div class="dscr-section">
-
+            <div class="governance__inner section-screen section-padding">
+                <div class="section-screen__inner">
+                    <div class="governance__body body-content-wrapper">
+                        <?php if ( $title = get_field('title_governance') ): ?>
+                        <h2 class="h2-text mb-spacing-70">
+                            <?= wp_kses($title, ['br' => []]); ?>
+                        </h2>
+                        <?php endif; ?>
+    
+                        <?php if ( $dscr = get_field('description_governance') ): ?>
+                        <div class="dscr-section">
+                            <?= wp_kses_post($dscr); ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <video autoplay loop muted playsinline poster="<?= get_template_directory_uri(); ?>/assets/images/compliance-poster.webp" preload="metadata" class="compliance__video">
-                    <source src="<?= get_template_directory_uri(); ?>/assets/video/compliance.webm" type="video/webm">
-                    <source src="<?= get_template_directory_uri(); ?>/assets/video/compliance.mp4" type="video/mp4">
-                </video>
+                <?php if ( have_rows('principles_governance') ) : ?>
+                <div class="features-bottom black-color section-padding pb-0">
+                    <?php if ( $title = get_field('title_principles_governance') ): ?>
+                    <h3 class="features-bottom__title">
+                        <?= esc_html($title); ?>
+                    </h3>
+                    <?php endif; ?>
+                    
+                    <ul class="features-bottom__items">
+                        <?php while ( have_rows('principles_governance') ) : the_row(); ?>
+                            <li class="features-bottom__item">
+                                <?php if ( $icon = get_sub_field('icon') ): ?>
+                                <?= get_wp_srcset_img($icon, 'features-bottom__item-icon', '32px'); ?>
+                                <?php endif; ?>
+
+                                <div class="features-bottom__item-body">
+                                    <?php if ( $dscr = get_sub_field('text') ): ?>
+                                    <?= wp_kses_post($dscr); ?>
+                                    <?php endif; ?>
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
+                    </ul>
+                </div>
+                <?php endif; ?>
             </div>
+
+            <?php if ( $media_data = get_field('media_governance') ): ?>
+            <?php get_template_part('modules/content-media', null, $media_data); ?>
+            <?php endif; ?>
         </div>
     </section>
 
-    <section class="infrastructure">
+    <section class="compliance content-media-bg-wrapper">
         <div class="container">
-            <div class="infrastructure__inner">
-                <div class="infrastructure__body">
-                    <h2 class="h2-text">
+            <div class="compliance__inner section-screen section-padding">
+                <div class="section-screen__inner">
+                    <div class="compliance__body body-content-wrapper">
+                        <?php if ( $title = get_field('title_compliance') ): ?>
+                        <h2 class="h2-text mb-spacing-70">
+                            <?= wp_kses($title, ['br' => []]); ?>
+                        </h2>
+                        <?php endif; ?>
+    
+                        <?php if ( $dscr = get_field('description_compliance') ): ?>
+                        <div class="dscr-section">
+                            <?= wp_kses_post($dscr); ?>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
 
-                    </h2>
+            <?php if ( $media_data = get_field('media_compliance') ): ?>
+            <?php get_template_part('modules/content-media', null, $media_data); ?>
+            <?php endif; ?>
+        </div>
+    </section>
 
-                    <div class="dscr-section">
-
+    <section class="infrastructure content-media-bg-wrapper">
+        <div class="container">
+            <div class="infrastructure__inner section-screen section-padding">
+                <div class="section-screen__inner">
+                    <div class="infrastructure__body body-content-wrapper">
+                        <?php if ( $title = get_field('title_infrastructure') ): ?>
+                        <h2 class="h2-text mb-spacing-70">
+                            <?= wp_kses($title, ['br' => []]); ?>
+                        </h2>
+                        <?php endif; ?>
+    
+                        <?php if ( $dscr = get_field('description_infrastructure') ): ?>
+                        <div class="dscr-section">
+                            <?= wp_kses_post($dscr); ?>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 
-                <video autoplay loop muted playsinline poster="<?= get_template_directory_uri(); ?>/assets/images/infrastructure-poster.webp" preload="metadata" class="infrastructure__video">
-                    <source src="<?= get_template_directory_uri(); ?>/assets/video/infrastructure.webm" type="video/webm">
-                    <source src="<?= get_template_directory_uri(); ?>/assets/video/infrastructure.mp4" type="video/mp4">
-                </video>
+                <?php if ( $media_data = get_field('media_infrastructure') ): ?>
+                <?php get_template_part('modules/content-media', null, $media_data); ?>
+                <?php endif; ?>
             </div>
         </div>
     </section>

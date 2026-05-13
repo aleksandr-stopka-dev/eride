@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <main>
-    <section class="platforms-single section-padding pt-0">
+    <section class="platforms-single h-screen section-padding pt-0">
         <?php eride_breadcrumbs(); ?>
 
         <div class="container">
@@ -32,6 +32,81 @@
             </div>
         </div>
     </section>
+
+    <?php
+        $post_name = get_post_field('post_name', get_the_ID());
+
+        $matching_term = get_term_by('slug', $post_name, 'platform_cat');
+
+        if ($matching_term && $matching_term->parent > 0) {
+            $services_query = new WP_Query([
+                'post_type'      => 'platforms',
+                'posts_per_page' => -1,
+                'post__not_in'   => [get_the_ID()],
+                'orderby'        => 'menu_order',
+                'order'          => 'ASC',
+                'tax_query'      => [
+                    [
+                        'taxonomy'         => 'platform_cat',
+                        'field'            => 'term_id',
+                        'terms'            => $matching_term->term_id,
+                        'include_children' => false,
+                    ]
+                ],
+            ]);
+        }
+    ?>
+
+    <?php if ( $services_query->have_posts() ): ?>
+        <section class="platforms-service-single section-padding">
+            <div class="container">
+                <div class="platforms-service-single__inner">
+                    <h2 class="h2-text mb-spacing-70">
+                        Choose a Service
+                    </h2>
+
+                    <div class="platforms-service-single__items">
+                        <?php while ($services_query->have_posts()) : $services_query->the_post(); ?>
+                            <?php
+                                $service_title   = get_the_title();
+                                $service_link    = get_permalink();
+                                $service_excerpt = get_the_excerpt();
+                            ?>
+
+                            <div class="platforms-service-single__item">
+                                <h3 class="platforms-service-single__item-title">
+                                    <?php if ($service_link) : ?>
+                                        <a href="<?= esc_url($service_link); ?>" class="platforms-service-single__item-link">
+                                    <?php endif; ?>
+                                        <?= wp_kses($service_title, ['br' => []]); ?>
+                                    <?php if ($service_link) : ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </h3>
+
+                                <?php if ($service_excerpt) : ?>
+                                    <div class="platforms-service-single__item-dscr">
+                                        <?= wp_kses($service_excerpt, ['br' => []]); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <?php if ($service_link) : ?>
+                                    <button type="button" class="platforms-service-single__item-open">
+                                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.05" />
+                                            <path d="M22.6464 36.6464C22.4512 36.8417 22.4512 37.1583 22.6464 37.3536C22.8417 37.5488 23.1583 37.5488 23.3536 37.3536L22.6464 36.6464ZM37.5 23V22.5H37H30.5V23.5H36.2929L22.6464 37.1464L23.3536 37.8536L37 24.2071V30H38V23.5V23H37.5ZM23.3536 37.3536L37.3536 23.3536L36.6464 22.6464L22.6464 36.6464L23.3536 37.3536Z" fill="white" />
+                                        </svg>
+                                    </button>
+                                <?php endif; ?>
+                            </div>
+                        <?php endwhile; ?>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php 
+        wp_reset_postdata(); 
+    endif; ?>
 </main>
 
 <?php get_footer(); ?>

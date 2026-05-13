@@ -10,7 +10,7 @@
         display: flex;
         align-items: center;
         padding-top: var(--heightHeader);
-        height: 100dvh;
+        min-height: 100dvh;
         max-height: calc(940px + var(--heightHeader));
         &::before{
             content: "";
@@ -41,7 +41,7 @@
             max-height: calc(800px + var(--heightHeader));
         }
         @media (max-width: 1400px){
-            height: auto;
+            min-height: auto;
         }
     }
     &__body{

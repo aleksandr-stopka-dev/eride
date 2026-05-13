@@ -95,7 +95,7 @@
             }
             input, .custom-select__trigger, textarea{
                 appearance: none;
-                background: #2A2A2A;
+                background: #1F2326;
                 border-radius: 10px;
                 padding: adapt-vw(16, 22) adapt-vw(24, 30);
                 //Text
@@ -131,9 +131,6 @@
                 flex: 1 1 100%;
                 height: adapt-vw(120, 180);
                 resize: none;
-                @media (max-width: 1600px){
-                    // height: adapt-vw(120, 170);
-                }
             }
         }
         &-footer{

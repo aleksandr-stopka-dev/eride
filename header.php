@@ -44,7 +44,7 @@
 						<a href="<?php echo esc_url( home_url('/') ); ?>">
 					<?php endif; ?>
                         <?php if ( $logo = get_field('logo', 'options') ): ?>
-                            <?= get_wp_srcset_img($logo, '', '175px', false); ?>
+                            <?= get_wp_srcset_img($logo, '', '170px', false); ?>
                         <?php endif; ?>
 					<?php if ( !is_front_page() ) : ?>
 						</a>
