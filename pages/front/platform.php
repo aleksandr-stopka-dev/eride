@@ -9,7 +9,7 @@
                 <?php endif; ?>
 
                 <?php if ( $dscr = get_field('description_platform') ): ?>
-                <div class="platform__dscr">
+                <div class="dscr-section dscr-section-min">
                     <?= wp_kses_post($dscr); ?>
                 </div>
                 <?php endif; ?>

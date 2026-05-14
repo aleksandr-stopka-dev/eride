@@ -79,22 +79,69 @@ function get_wp_srcset_img($img, $class = '', $size_attr = '800px', $is_lazy = t
 }
 
 add_action('pre_get_posts', function($query) {
-    if (!is_admin() && $query->is_main_query() && (is_post_type_archive('platforms') || is_tax('platform_cat'))) {
-        
-        $query->set('orderby', 'menu_order');
-        $query->set('order', 'ASC');
+    if (!is_admin() && $query->is_main_query()) {
+        if (is_post_type_archive('platforms') || is_tax('platform_cat') || is_post_type_archive('innovation')) {
+    
+            $query->set('orderby', 'menu_order');
+            $query->set('order', 'ASC');
 
-        if (is_tax('platform_cat')) {
-            $tax_query = $query->get('tax_query') ?: [];
-            
-            $tax_query[] = [
-                'taxonomy'         => 'platform_cat',
-                'field'            => 'term_id',
-                'terms'            => get_queried_object_id(),
-                'include_children' => false,
-            ];
+            if (is_tax('platform_cat')) {
+                $tax_query = $query->get('tax_query') ?: [];
+                
+                $tax_query[] = [
+                    'taxonomy'         => 'platform_cat',
+                    'field'            => 'term_id',
+                    'terms'            => get_queried_object_id(),
+                    'include_children' => false,
+                ];
 
-            $query->set('tax_query', $tax_query);
+                $query->set('tax_query', $tax_query);
+            }
         }
     }
+});
+
+add_action('init', 'add_platforms_custom_rewrite_rules');
+function add_platforms_custom_rewrite_rules() {
+    add_rewrite_rule(
+        '^our-platforms/(.+?)/([^/]+)/?$',
+        'index.php?platforms=$matches[2]',
+        'top'
+    );
+}
+
+add_filter('single_template', function($template) {
+    if (!is_singular()) {
+        return $template;
+    }
+
+    global $post;
+
+    if ($post->post_type === 'innovation') {
+        $common_template = locate_template('single-common.php');
+        if ($common_template) return $common_template;
+    }
+
+    if ($post->post_type === 'platforms') {
+        $terms = get_the_terms($post->ID, 'platform_cat');
+
+        if (!empty($terms) && !is_wp_error($terms)) {
+            $has_valid_subcat = false;
+
+            foreach ($terms as $term) {
+                if ($term->parent > 0 && $term->slug !== $post->post_name) {
+                    $has_valid_subcat = true;
+                    break;
+                }
+            }
+
+            if ($has_valid_subcat) {
+                $common_template = locate_template('single-common.php');
+                if ($common_template) return $common_template;
+            }
+        }
+        
+    }
+
+    return $template;
 });

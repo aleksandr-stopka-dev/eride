@@ -48,15 +48,11 @@
             transition: .3s ease;
         }
     }
-    &__item a{
+    &__item:not(:has(.breadcrumbs__home)) a {
         transition: opacity .3s ease;
         @media (any-hover: hover){
             &:hover{
-                @media (any-hover: hover){
-                    &:hover{
-                        opacity: .8;
-                    }
-                }
+                opacity: .8;
             }
         }
     }

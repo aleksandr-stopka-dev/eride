@@ -10,7 +10,7 @@ function eride_breadcrumbs() {
 
     echo '<li class="breadcrumbs__item">';
     echo '<a href="' . home_url('/') . '" class="breadcrumbs__home">';
-    echo '<svg width="25" height="9" viewBox="0 0 25 9" fill="none" xmlns="http://w3.org">
+    echo '<svg width="25" height="9" viewBox="0 0 25 9" fill="none" xmlns="w3.org">
             <path d="M0.175345 3.99412C-0.0589693 4.22843 -0.0589693 4.60833 0.175345 4.84264L3.99372 8.66102C4.22804 8.89534 4.60794 8.89534 4.84225 8.66102C5.07656 8.42671 5.07656 8.04681 4.84225 7.81249L1.44814 4.41838L4.84225 1.02427C5.07656 0.789953 5.07656 0.410055 4.84225 0.17574C4.60794 -0.0585747 4.22804 -0.0585747 3.99372 0.17574L0.175345 3.99412ZM24.5996 4.41838V3.81838H0.599609V4.41838V5.01838H24.5996V4.41838Z" fill="white"/>
           </svg>';
     echo '<span>Home</span>';
@@ -42,6 +42,20 @@ function eride_breadcrumbs() {
             if ($parents) {
                 $parents_array = explode('###', rtrim($parents, '###'));
                 foreach ($parents_array as $parent) {
+                    if ( preg_match('/href="([^"]+)"/', $parent, $matches) ) {
+                        $term_url = $matches[1];
+                        if ( $url_path = parse_url($term_url, PHP_URL_PATH) ) {
+                            $path_slugs = array_filter(explode('/', $url_path));
+                            $last_slug = end($path_slugs);
+                            $term_obj = get_term_by('slug', $last_slug, $taxonomy);
+                            if ( $term_obj ) {
+                                $full_path = get_term_parents_list($term_obj->term_id, $taxonomy, ['link' => false, 'separator' => '/', 'inclusive' => true, 'format' => 'slug']);
+                                $full_path = trim($full_path, '/');
+                                $correct_url = home_url( '/our-platforms/' . $full_path . '/' );
+                                $parent = preg_replace('/href="[^"]+"/', 'href="' . $correct_url . '"', $parent);
+                            }
+                        }
+                    }
                     $items[] = str_replace('<a', '<a class="breadcrumbs__link"', $parent);
                 }
             }
@@ -86,7 +100,32 @@ function eride_breadcrumbs() {
 
                 $parents = get_term_parents_list($main_term->term_id, $hierarchical_tax, ['link' => true, 'separator' => '###', 'inclusive' => $inclusive]);
                 $parents_array = explode('###', rtrim($parents, '###'));
+                
                 foreach ($parents_array as $parent) {
+                    if (empty($parent)) continue;
+
+                    if (preg_match('/href="([^"]+)"/', $parent, $url_matches)) {
+                        $wrong_url = $url_matches[1];
+                        
+                        $url_path = parse_url($wrong_url, PHP_URL_PATH);
+                        $url_slugs = array_filter(explode('/', $url_path));
+                        $current_term_slug = end($url_slugs);
+                        $current_term = get_term_by('slug', $current_term_slug, $hierarchical_tax);
+
+                        if ($current_term) {
+                            $full_path = get_term_parents_list($current_term->term_id, $hierarchical_tax, [
+                                'link'      => false,
+                                'separator' => '/',
+                                'inclusive' => true,
+                                'format'    => 'slug'
+                            ]);
+                            $full_path = trim($full_path, '/');
+                            
+                            $correct_url = home_url('/our-platforms/' . $full_path . '/');
+                            $parent = str_replace($wrong_url, $correct_url, $parent);
+                        }
+                    }
+
                     $items[] = str_replace('<a', '<a class="breadcrumbs__link"', $parent);
                 }
             }
@@ -101,7 +140,9 @@ function eride_breadcrumbs() {
     }
 
     foreach ($items as $item) {
-        echo '<li class="breadcrumbs__item">' . $item . '</li>';
+        if (!empty($item)) {
+            echo '<li class="breadcrumbs__item">' . $item . '</li>';
+        }
     }
 
     echo '</ul>';

@@ -38,7 +38,18 @@
 //Partner
 @import './pages/partner/partner';
 
+//Contacts
+@import './pages/contacts/contacts';
+@import './pages/contacts/contacts-form';
+
 //Platforms
 @import './pages/platforms/platforms-archive';
 @import './pages/platforms/platforms-single';
 @import './pages/platforms/platforms-service-single';
+
+//Single common
+@import './pages/single-common/hero-single-common';
+@import './pages/single-common/section-single-common';
+
+//Thank you
+@import './pages/thank-you/thank-you';

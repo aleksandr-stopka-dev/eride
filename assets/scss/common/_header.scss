@@ -1,19 +1,19 @@
 .header{
     position: relative;
     z-index: 50;
-    padding: 18px 0;
+    padding: 22px 0;
     border-bottom: 1px solid rgba(255, 255, 255, .1);
     &.is-platforms-single{
         background: var(--main-bg-color);
     }
     @media (max-width: 1600px){
-        padding: 16px 0;
+        padding: 18px 0;
     }
     @media (max-width: 1200px){
-        padding: 14px 0;
+        padding: 16px 0;
     }
     @media (max-width: 800px){
-        padding: 12px;
+        padding: 14px;
     }
     @media (max-width: 600px){
         padding: 11px 0;
@@ -26,19 +26,19 @@
     &__logo{
         img{
             @media (max-width: 1600px){
-                width: 165px;
-            }
-            @media (max-width: 1280px){
                 width: 160px;
             }
-            @media (max-width: 1200px){
+            @media (max-width: 1280px){
                 width: 155px;
             }
-            @media (max-width: 800px){
+            @media (max-width: 1200px){
                 width: 150px;
             }
-            @media (max-width: 600px){
+            @media (max-width: 800px){
                 width: 145px;
+            }
+            @media (max-width: 600px){
+                width: 143px;
             }
         }
     }
@@ -46,7 +46,7 @@
         @media (max-width: 1200px){
             display: none;
         }
-        ul{
+        > ul{
             display: flex;
             gap: adapt-vw(20, 50);
             //Text
@@ -54,12 +54,19 @@
             font-size: adapt-vw(13, 15);
             line-height: 1;
             text-transform: uppercase;
-            @media (max-width: 1600px){
-                gap: adapt-vw(20, 40);
-                //Text
-                font-size: adapt-vw(13, 14);
+            > li{
+                @media (any-hover: hover){
+                    &:hover{
+                        .sub-menu-wrapper{
+                            opacity: 1;
+                            pointer-events: auto;
+                        }
+                    }
+                }
             }
-            a{
+            > li > a{
+                position: relative;
+                z-index: 20;
                 display: flex;
                 align-items: center;
                 gap: adapt-vw(8, 14);
@@ -72,6 +79,82 @@
                 }
                 svg{
                     flex-shrink: 0;
+                }
+            }
+        }
+        .sub-menu-wrapper{
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .3s ease;
+            //Style
+            position: absolute;
+            top: var(--heightHeader);
+            left: 0;
+            width: 100%;
+            &::before{
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 60px;
+                transform: translate(0, -100%);
+            }
+            .container{
+                background: var(--white-color);
+                border-radius: 30px;
+            }
+            .sub-menu{
+                padding: adapt-vw(60, 110) 0;
+                // display: grid;
+                // grid-template-columns: repeat(4, minmax(auto, 1fr));
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: adapt-vw(20, 30);
+                li{
+                    flex: 1 1 337px;
+                    position: relative;
+                    padding: adapt-vw(30, 60) adapt-vw(18, 36);
+                    //Text
+                    color: var(--black-color);
+                    text-transform: none;
+                    @media (any-hover: hover){
+                        &:hover{
+                            color: var(--main-color);
+                        }
+                    }
+                    img{
+                        width: adapt-vw(36, 42);
+                        margin-bottom: adapt-vw(20, 30);
+                    }
+                    strong{
+                        display: block;
+                        margin-bottom: adapt-vw(14, 16);
+                        transition: .3s ease;
+                        //Text
+                        font-family: 'Archivo Expanded';
+                        font-weight: 400;
+                        font-size: adapt-vw(18, 22);
+                        line-height: var(--line-height-text);
+                    }
+                    a{
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            z-index: 10;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                    p{
+                        transition: .3s ease;
+                        //Text
+                        font-weight: 400;
+                        line-height: var(--line-height-text);
+                    }
                 }
             }
         }

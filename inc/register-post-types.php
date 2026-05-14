@@ -21,7 +21,7 @@ add_action('init', function() {
         'taxonomies'         => ['platform_cat'],
         'show_in_rest'       => true,
         'labels'             => ['name' => 'Our Platforms', 'menu_name' => 'Platforms'],
-        'rewrite'            => ['slug' => 'our-platforms/%platform_cat%', 'with_front' => false],
+        'rewrite'            => ['slug' => 'our-platforms/%platform_cat%', 'with_front' => false, 'hierarchical' => true],
     ]);
 
     register_post_type('innovation', [
@@ -30,6 +30,7 @@ add_action('init', function() {
         'has_archive'        => 'innovation-research-development',
         'menu_icon'          => 'dashicons-chart-line',
         'supports'           => ['title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'],
+        'hierarchical'       => true,
         'show_in_rest'       => true,
         'labels'             => ['name' => 'Innovation and R&D', 'menu_name' => 'Innovation'],
         'rewrite'            => ['slug' => 'innovation-research-development'],

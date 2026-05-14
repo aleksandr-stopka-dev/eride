@@ -1,0 +1,5 @@
+.contacts-form{
+    .partnership__form-body input:first-of-type{
+        flex: 0 1 calc(50% - (#{adapt-vw(10, 14)} / 2));
+    }
+}

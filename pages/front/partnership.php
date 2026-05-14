@@ -9,7 +9,7 @@
                 <?php endif; ?>
 
                 <?php if ( $dscr = get_field('description_partnership', get_option('page_on_front')) ): ?>
-                <div class="partnership__dscr">
+                <div class="dscr-section dscr-section-min">
                     <?= wp_kses_post($dscr); ?>
                 </div>
                 <?php endif; ?>

@@ -26,22 +26,6 @@
             width: 100%;
         }
     }
-    &__dscr{
-        max-width: 470px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: adapt-vw(18, 40);
-        //Text
-        line-height: var(--line-height-text);
-        p:not(:has(strong)){
-            opacity: .6;
-        }
-        strong{
-            font-weight: 500;
-            font-size: adapt-vw(16, 20);
-        }
-    }
     &__slider{
         width: 100%;
         min-width: 0;

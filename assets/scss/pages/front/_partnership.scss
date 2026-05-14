@@ -46,25 +46,6 @@
             width: 100%;
         }
     }
-    &__dscr{
-        max-width: 470px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: adapt-vw(18, 40);
-        //Text
-        line-height: var(--line-height-text);
-        p:not(:has(strong)){
-            opacity: .6;
-        }
-        strong{
-            font-weight: 500;
-            font-size: adapt-vw(16, 20);
-            @media (max-width: 1600px){
-                font-size: adapt-vw(16, 18);
-            }
-        }
-    }
     &__form{
         width: 100%;
         padding-left: adapt-vw(20, 50);
@@ -90,7 +71,7 @@
                 flex: 0 1 calc(50% - (#{adapt-vw(10, 14)} / 2));
                 min-width: 0;
                 @media (max-width: 1000px){
-                    flex: 1 1 100%;
+                    flex: 1 1 100% !important;
                 }
             }
             input, .custom-select__trigger, textarea{
@@ -146,9 +127,8 @@
                 background: var(--white-color);
                 flex: 1 0 auto;
                 //Text
-                font-weight: 500;
-                font-size: adapt-vw(16, 20);
-                text-transform: none;
+                font-weight: 600;
+                text-transform: uppercase;
                 white-space: nowrap;
                 color: var(--black-color);
                 @media (max-width: 1000px){

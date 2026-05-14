@@ -36,7 +36,30 @@
     <?php wp_head(); ?>
 </head>
 <body>
-	<header class="header <?= is_singular('platforms') ? 'is-platforms-single' : '' ?>">
+    <?php 
+        $header_class = '';
+
+        if (is_singular('platforms')) {
+            global $post;
+            $terms = get_the_terms($post->ID, 'platform_cat');
+            $is_common_template = false;
+
+            if (!empty($terms) && !is_wp_error($terms)) {
+                foreach ($terms as $term) {
+                    if ($term->parent > 0 && $term->slug !== $post->post_name) {
+                        $is_common_template = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!$is_common_template) {
+                $header_class = 'is-platforms-single';
+            }
+        }
+    ?>
+
+	<header class="header <?= esc_attr($header_class) ?>">
 		<div class="container">
 			<div class="header__inner">
 				<div class="header__logo">
@@ -57,28 +80,138 @@
                             <a href="<?= home_url('our-platforms') ?>">
                                 Our Platforms
                             </a>
+
+                            <div class="sub-menu-wrapper">
+                                <div class="container">
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/immigration-mobility.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('our-platforms/immigration-mobility')); ?>">
+                                                    Immigration & Mobility
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                Cross border compliance and case visibility.
+                                            </p>
+                                        </li>
+
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/financial-services.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('our-platforms/financial-community-lending')); ?>">
+                                                    Financial Services
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                Inclusive and structured lending ecosystems.
+                                            </p>
+                                        </li>
+
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/public-sector.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('our-platforms/public-sector-tender-intelligence')); ?>">
+                                                    Public Sector & Procurement
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                Transparent tender access and management.
+                                            </p>
+                                        </li>
+
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/beauty-services.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('our-platforms/lifestyle-beauty-services')); ?>">
+                                                    Lifestyle & Beauty Services
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                Digital platform for booking, discovery, and service management.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="<?= esc_url(home_url('innovation-research-development')); ?>">
                                 Innovation and R&D
                             </a>
+
+                            <div class="sub-menu-wrapper">
+                                <div class="container">
+                                    <ul class="sub-menu">
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/architecture.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('innovation-research-development/architecture')); ?>">
+                                                    Architecture
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                How we build secure, scalable digital platforms.
+                                            </p>
+                                        </li>
+
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/automation-ai.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('innovation-research-development/automation-ai')); ?>">
+                                                    Automation & AI
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                How we use automation and AI to streamline workflows.
+                                            </p>
+                                        </li>
+
+                                        <li>
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icons/compliance-design.svg" alt="">
+    
+                                            <strong>
+                                                <a href="<?= esc_url(home_url('innovation-research-development/compliance-by-design')); ?>">
+                                                    Compliance by Design
+                                                </a>
+                                            </strong>
+    
+                                            <p>
+                                                How we build compliance into platforms from the start.
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="<?= esc_url(home_url('about')); ?>">
                                 About
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="<?= esc_url(home_url('partner-with-us')); ?>">
                                 Partner With Us
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="<?= esc_url(home_url('contacts')); ?>">
                                 Contacts
 
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

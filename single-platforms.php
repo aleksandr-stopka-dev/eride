@@ -13,7 +13,7 @@
     
                     <?php if ( get_the_content() ): ?>
                     <div class="platforms-single__dscr dscr-section dscr-section-min">
-                        <?= the_content(); ?>
+                        <?= wp_kses_post(get_the_content()); ?>
                     </div>
                     <?php endif; ?>
                     
@@ -38,6 +38,8 @@
 
         $matching_term = get_term_by('slug', $post_name, 'platform_cat');
 
+        $services_query = false;
+
         if ($matching_term && $matching_term->parent > 0) {
             $services_query = new WP_Query([
                 'post_type'      => 'platforms',
@@ -57,7 +59,7 @@
         }
     ?>
 
-    <?php if ( $services_query->have_posts() ): ?>
+    <?php if ( $services_query && $services_query->have_posts() ): ?>
         <section class="platforms-service-single section-padding">
             <div class="container">
                 <div class="platforms-service-single__inner">

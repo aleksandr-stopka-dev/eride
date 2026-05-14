@@ -1,4 +1,4 @@
-.partner{
+.hero-single-common{
     display: flex;
     flex-direction: column;
     .container{
@@ -6,15 +6,11 @@
         flex: 1 1 auto;
     }
     &__inner{
+        width: 100%;
         display: flex;
         flex-direction: column;
     }
     .content-media-bg{
         mix-blend-mode: lighten;
-    }
-    .features-bottom__items{
-        @media (min-width: 1000px){
-            margin-top: 60px;
-        }
     }
 }

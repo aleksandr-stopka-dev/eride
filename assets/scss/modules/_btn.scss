@@ -15,12 +15,6 @@
     line-height: 1;
     text-transform: uppercase;
     color: var(--white-color);
-    @media (max-width: 1600px){
-        padding: adapt-vw(18, 24) adapt-vw(30, 48);
-        gap: adapt-vw(16, 24);
-        //Text
-        font-size: adapt-vw(14, 15);
-    }
     @media (any-hover: hover){
         &:hover{
             &::before{

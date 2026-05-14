@@ -10,8 +10,8 @@
         display: flex;
         align-items: center;
         padding-top: var(--heightHeader);
-        min-height: 100dvh;
-        max-height: calc(940px + var(--heightHeader));
+        height: max-content; 
+        min-height: min(calc(940px + var(--heightHeader)), 100dvh);
         &::before{
             content: "";
             position: absolute;

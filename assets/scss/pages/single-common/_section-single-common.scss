@@ -1,0 +1,13 @@
+.section-single-common{
+    &.gray-bg{
+        background: linear-gradient(180deg, #9badc5 0%, #d7e1ec 61.06%);
+        //Text
+        color: var(--black-color);
+        .content-media-bg{
+            mix-blend-mode: normal;
+        }
+    }
+    .content-media-bg{
+        mix-blend-mode: lighten;
+    }
+}
