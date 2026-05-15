@@ -12,10 +12,7 @@ add_action('after_setup_theme', function() {
 
     register_nav_menus([
         'header_menu' => 'Header menu',
-        'footer_menu_products' => 'Footer products menu',
-        'footer_menu_solutions' => 'Footer solutions menu',
-        'footer_menu_resources' => 'Footer resources menu',
-        'footer_menu_company' => 'Footer company menu',
+        'footer_menu_document' => 'Footer document menu',
     ]);
 });
 

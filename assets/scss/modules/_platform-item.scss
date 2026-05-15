@@ -1,5 +1,6 @@
 .platform-item{
     position: relative;
+    z-index: 0;
     overflow: hidden;
     //Style
     background: var(--main-bg-color);
@@ -27,7 +28,7 @@
         padding: adapt-vw(30, 76) adapt-vw(20, 76);
     }
     &__body{
-        width: 65%;
+        width: 60%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -73,10 +74,10 @@
     }
     &__img{
         position: absolute;
-        z-index: 0;
+        z-index: -1;
         bottom: 0;
         right: 0;
-        width: 44%;
+        width: 40.6%;
         height: 100% !important;
         object-fit: cover;
         object-position: left center;

@@ -12,31 +12,31 @@
                         <nav class="footer__menu">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= esc_url(home_url('our-platforms')); ?>">
                                         Our Platforms
                                     </a>
                                 </li>
     
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= esc_url(home_url('innovation-research-development')); ?>">
                                         Innovation R&D
                                     </a>
                                 </li>
     
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= esc_url(home_url('about')); ?>">
                                         About
                                     </a>
                                 </li>
     
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= esc_url(home_url('partner-with-us')); ?>">
                                         Partner With Us
                                     </a>
                                 </li>
     
                                 <li>
-                                    <a href="#">
+                                    <a href="<?= esc_url(home_url('contacts')); ?>">
                                         Contacts
     
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -90,43 +90,15 @@
                 </div>
 
                 <nav class="footer__menu-document">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Corporate details
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                Compliance & Legal
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                POPIA
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                Privacy
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                Terms
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                Disclaimer
-                            </a>
-                        </li>
-                    </ul>
+                    <?php
+                        wp_nav_menu(
+                            array(
+                                'theme_location' => 'footer_menu_document',
+                                'container' => false,
+                                'menu_class' => 'menu-list',
+                            )
+                        );
+                    ?>
                 </nav>
 			</div>
 		</div>

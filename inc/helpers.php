@@ -101,11 +101,17 @@ add_action('pre_get_posts', function($query) {
     }
 });
 
-add_action('init', 'add_platforms_custom_rewrite_rules');
+add_action('init', 'add_platforms_custom_rewrite_rules', 11);
 function add_platforms_custom_rewrite_rules() {
     add_rewrite_rule(
-        '^our-platforms/(.+?)/([^/]+)/?$',
+        '^our-platforms/([^/]+)/([^/]+)/?$',
         'index.php?platforms=$matches[2]',
+        'top'
+    );
+    
+    add_rewrite_rule(
+        '^our-platforms/(.+?)/([^/]+)/?$',
+        'index.php?post_type=platforms&name=$matches[2]',
         'top'
     );
 }

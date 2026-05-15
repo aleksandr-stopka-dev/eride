@@ -31,12 +31,22 @@
     top: calc(100% + 10px); 
     left: 0;
     width: 100%;
+    max-height: 180px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     //Current style
     background: #1F2326;
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, .2);
+    &::-webkit-scrollbar{
+        width: 3px;
+    }
+    &::-webkit-scrollbar-thumb{
+        width: 3px;
+        border-radius: 10px;
+        background: var(--white-color);
+    }
 }
 
 .custom-select.is-open .custom-select__options{

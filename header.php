@@ -77,8 +77,10 @@
                 <nav class="header__menu">
                     <ul>
                         <li>
-                            <a href="<?= home_url('our-platforms') ?>">
+                            <a href="<?= esc_url(home_url('our-platforms')); ?>">
                                 Our Platforms
+
+                                <span class="sub-menu-btn"></span>
                             </a>
 
                             <div class="sub-menu-wrapper">
@@ -147,6 +149,8 @@
                         <li>
                             <a href="<?= esc_url(home_url('innovation-research-development')); ?>">
                                 Innovation and R&D
+
+                                <span class="sub-menu-btn"></span>
                             </a>
 
                             <div class="sub-menu-wrapper">

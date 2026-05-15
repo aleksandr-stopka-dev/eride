@@ -10,7 +10,7 @@ function eride_breadcrumbs() {
 
     echo '<li class="breadcrumbs__item">';
     echo '<a href="' . home_url('/') . '" class="breadcrumbs__home">';
-    echo '<svg width="25" height="9" viewBox="0 0 25 9" fill="none" xmlns="w3.org">
+    echo '<svg width="25" height="9" viewBox="0 0 25 9" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.175345 3.99412C-0.0589693 4.22843 -0.0589693 4.60833 0.175345 4.84264L3.99372 8.66102C4.22804 8.89534 4.60794 8.89534 4.84225 8.66102C5.07656 8.42671 5.07656 8.04681 4.84225 7.81249L1.44814 4.41838L4.84225 1.02427C5.07656 0.789953 5.07656 0.410055 4.84225 0.17574C4.60794 -0.0585747 4.22804 -0.0585747 3.99372 0.17574L0.175345 3.99412ZM24.5996 4.41838V3.81838H0.599609V4.41838V5.01838H24.5996V4.41838Z" fill="white"/>
           </svg>';
     echo '<span>Home</span>';

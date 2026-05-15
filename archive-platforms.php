@@ -11,9 +11,9 @@ $title  = $is_tax ? single_term_title('', false) : 'Our Platforms';
     <section class="platforms-archive section-padding pt-0">
         <div class="container">
             <div class="platforms-archive__inner">     
-                <h2 class="h2-text mb-spacing-70">
+                <h1 class="h2-text mb-spacing-70">
                     <?= esc_html($title); ?>
-                </h2>
+                </h1>
 
                 <div class="platforms-archive__items">
                     <?php 

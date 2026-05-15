@@ -25,14 +25,19 @@
     }
     &__img{
         position: absolute;
-        top: 0;
+        top: 50%;
         right: 0;
+        transform: translate(0%, -50%);
         max-width: 1040px;
         width: 55%;
         height: 100%;
+        max-height: 940px;
         mask-image: linear-gradient(to right, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
         @media (min-width: 1920px){
             right: calc((100vw - 1440px) / 2 - 240px);
+        }
+        @media (max-width: 1600px){
+            width: 50%;
         }
         @media (max-width: 1200px){
             width: 40%;

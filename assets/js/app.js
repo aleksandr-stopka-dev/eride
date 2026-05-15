@@ -32,7 +32,6 @@ const createSwiper = (selector, options) => {
 
     sections.forEach(s => observer.observe(s));
 };
-
 document.addEventListener('DOMContentLoaded', () => {
     createSwiper('.principles', {
         slidesPerView: 1,
@@ -112,7 +111,55 @@ const initCustomSelect = (selector) => {
         });
     });
 }
+document.addEventListener('DOMContentLoaded', () => { initCustomSelect('#partnership-contact-form select'); });
 
-document.addEventListener('DOMContentLoaded', () => {
-    initCustomSelect('#partnership-contact-form select');
-});
+const menuMobile = () => {
+    const btn = document.querySelector('.header__menu-btn');
+    const menu = document.querySelector('.header__menu');
+
+    if (!btn && !menu) return;
+
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('is-active');
+
+        document.body.classList.toggle('is-locked');
+    })
+}
+document.addEventListener('DOMContentLoaded', () => { menuMobile(); });
+
+const subMenuMobile = () => {
+    const btns = document.querySelectorAll('.header__menu .sub-menu-btn');
+
+    btns.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const activeLi = document.querySelector('.header__menu li.is-active');
+
+            const parentLi = btn.closest('li');
+            if (!parentLi) return;
+
+            const subMenu = parentLi.querySelector('.sub-menu-wrapper');
+            if (!subMenu) return;
+
+            if (activeLi && activeLi !== parentLi) {
+                activeLi.classList.remove('is-active');
+                
+                const activeSubMenu = activeLi.querySelector('.sub-menu-wrapper');
+                if (activeSubMenu) {
+                    activeSubMenu.style.maxHeight = '0px';
+                }
+            }
+
+            const isActive = parentLi.classList.toggle('is-active');
+            
+            subMenu.style.maxHeight = isActive ? `${subMenu.scrollHeight}px` : '0px';
+        });
+    });
+
+    const firstBtn = btns[0]; 
+    if (firstBtn) {
+        firstBtn.click();
+    }
+};
+document.addEventListener('DOMContentLoaded', subMenuMobile);

@@ -19,7 +19,7 @@ get_header();
                     <?php endif; ?>
     
                     <?php if ( $dscr = get_field('description_partner') ): ?>
-                    <div class="dscr-section">
+                    <div class="dscr-section dscr-section-text-opacity">
                         <?= wp_kses_post($dscr); ?>
                     </div>
                     <?php endif; ?>

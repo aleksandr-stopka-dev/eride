@@ -8,7 +8,7 @@ add_action('init', function() {
         'show_admin_column' => true,
         'show_in_rest'      => true,
         'labels' => ['name' => 'Platform Categories', 'singular_name' => 'Category'],
-        'rewrite'           => ['slug' => 'our-platforms', 'with_front' => false], 
+        'rewrite'           => ['slug' => 'our-platforms', 'with_front' => false, 'hierarchical' => true], 
     ]);
 
     register_post_type('platforms', [

@@ -89,9 +89,6 @@
     height: max-content; 
     min-height: min(940px, calc(100dvh - var(--heightHeader)));
     overflow: hidden;
-    @media (max-width: 1600px){
-        max-height: 800px;
-    }
     @media (max-width: 1400px){
         min-height: auto;
     }
@@ -100,8 +97,12 @@
 .body-content-wrapper{
     position: relative;
     z-index: 10;
-    max-width: 655px;
-    width: 46.2%;
+    max-width: 665px;
+    width: 50%;
+    &.body-content-wrapper-full{
+        max-width: 100%;
+        width: 100%;
+    }
     @media (max-width: 1000px){
         max-width: 100%;
         width: 100%;

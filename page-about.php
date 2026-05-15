@@ -19,7 +19,7 @@ get_header();
                     <?php endif; ?>
     
                     <?php if ( $dscr = get_field('description_about') ): ?>
-                    <div class="dscr-section">
+                    <div class="dscr-section dscr-section-text-opacity">
                         <?= wp_kses_post($dscr); ?>
                     </div>
                     <?php endif; ?>
@@ -28,9 +28,9 @@ get_header();
                 <?php if ( have_rows('strengths_about') ) : ?>
                 <div class="features-bottom section-padding pb-0">
                     <?php if ( $title = get_field('title_strengths_about') ): ?>
-                    <h3 class="features-bottom__title">
+                    <h2 class="features-bottom__title">
                         <?= esc_html($title); ?>
-                    </h3>
+                    </h2>
                     <?php endif; ?>
                     
                     <ul class="features-bottom__items">
@@ -122,7 +122,7 @@ get_header();
                         <?php endif; ?>
     
                         <?php if ( $dscr = get_field('description_mission') ): ?>
-                        <div class="dscr-section">
+                        <div class="dscr-section dscr-section-text-opacity">
                             <?= wp_kses_post($dscr); ?>
                         </div>
                         <?php endif; ?>
@@ -226,7 +226,7 @@ get_header();
                         <?php endif; ?>
     
                         <?php if ( $dscr = get_field('description_compliance') ): ?>
-                        <div class="dscr-section">
+                        <div class="dscr-section dscr-section-text-opacity">
                             <?= wp_kses_post($dscr); ?>
                         </div>
                         <?php endif; ?>
