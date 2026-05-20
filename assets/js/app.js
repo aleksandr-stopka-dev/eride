@@ -163,3 +163,109 @@ const subMenuMobile = () => {
     }
 };
 document.addEventListener('DOMContentLoaded', subMenuMobile);
+
+const initPartnershipForm = () => {
+    const form = document.getElementById('partnership-contact-form');
+    
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formMessage = document.querySelector('#form-result-message');
+        const button = form.querySelector('button[type="submit"]');
+        if (button) button.disabled = true;
+        if (formMessage) formMessage.textContent = '';
+
+        if (typeof wp_data === 'undefined') {
+            console.error('WordPress localization data (wp_data) is missing.');
+            if (formMessage) formMessage.textContent = 'Configuration error. Please try again later.';
+            if (button) button.disabled = false;
+            return;
+        }
+
+        const formData = new FormData(form);
+        formData.append('action', 'send_partnership_form');
+        formData.append('nonce', wp_data.nonce);
+
+        fetch(wp_data.ajax_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/thank-you/';
+            } else {
+                if (formMessage) {
+                    formMessage.textContent = data.data.message || 'An error occurred, please try again later.';
+                }
+                if (button) button.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            if (formMessage) {
+                formMessage.textContent = 'Network error. Please check your connection and try again.';
+            }
+            if (button) button.disabled = false;
+        });
+    });
+};
+document.addEventListener('DOMContentLoaded', initPartnershipForm);
+
+const initContactsForm = () => {
+    const form = document.getElementById('contacts-form');
+
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const formMessage = document.querySelector('#form-result-message');
+        const button = form.querySelector('button[type="submit"]');
+        if (button) button.disabled = true;
+        if (formMessage) formMessage.textContent = '';
+
+        if (typeof wp_data === 'undefined') {
+            console.error('WordPress localization data (wp_data) is missing.');
+            if (formMessage) formMessage.textContent = 'Configuration error. Please try again later.';
+            if (button) button.disabled = false;
+            return;
+        }
+
+        const formData = new FormData(form);
+        formData.append('action', 'send_contacts_form');
+        formData.append('nonce', wp_data.nonce);
+
+        fetch(wp_data.ajax_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Network response was not ok');
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                window.location.href = '/thank-you/';
+            } else {
+                if (formMessage) {
+                    formMessage.textContent = data.data.message || 'An error occurred, please try again later.';
+                }
+                if (button) button.disabled = false;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            if (formMessage) {
+                formMessage.textContent = 'Network error. Please check your connection and try again.';
+            }
+            if (button) button.disabled = false;
+        });
+    });
+};
+document.addEventListener('DOMContentLoaded', initContactsForm);

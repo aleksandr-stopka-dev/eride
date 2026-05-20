@@ -1443,6 +1443,7 @@ main {
   margin-bottom: calc(clamp(14px, 14.3px + -0.09375vw, 12.8px) + clamp(0px, (100vw - 1600px) * 0.01, 3.2px));
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+  min-height: 2lh;
   font-family: "Archivo Expanded";
   font-weight: 400;
   font-size: calc(clamp(18px, 18.1px + -0.03125vw, 17.6px) + clamp(0px, (100vw - 1600px) * 0.01375, 4.4px));
@@ -1729,14 +1730,18 @@ h1, h2, h3, h4, h5, h6 {
 .dscr-section.dscr-section-text-opacity p:not(:has(strong)), .dscr-section.dscr-section-text-opacity ul, .dscr-section.dscr-section-text-opacity ol {
   opacity: 0.6;
 }
-.dscr-section.dscr-section-text-opacity p p, .dscr-section.dscr-section-text-opacity p a, .dscr-section.dscr-section-text-opacity p span {
-  opacity: 0.6;
-}
 .dscr-section.dscr-section-min p:not(:has(strong)), .dscr-section.dscr-section-min ul, .dscr-section.dscr-section-min ol {
   font-size: calc(clamp(14px, 14.3px + -0.09375vw, 12.8px) + clamp(0px, (100vw - 1600px) * 0.01, 3.2px));
 }
 .dscr-section.dscr-section-gap-big {
   gap: calc(clamp(24px, 20px + 1.25vw, 40px) + clamp(0px, (100vw - 1600px) * 0.03125, 10px));
+}
+.dscr-section.dscr-section-gap-big h3 {
+  margin-bottom: calc((clamp(12px, 10px + 0.625vw, 20px) + clamp(0px, (100vw - 1600px) * 0.015625, 5px)) * -1);
+}
+.dscr-section h3 {
+  margin-bottom: calc((clamp(12px, 12px + 0vw, 12px) + clamp(0px, (100vw - 1600px) * 0.009375, 3px)) * -1);
+  font-size: calc(clamp(20px, 18.2px + 0.5625vw, 27.2px) + clamp(0px, (100vw - 1600px) * 0.02125, 6.8px));
 }
 .dscr-section strong {
   font-weight: 500;
@@ -1758,9 +1763,12 @@ h1, h2, h3, h4, h5, h6 {
   list-style: disc;
   padding-left: 1em;
 }
+.dscr-section a {
+  text-decoration: underline;
+}
 @media (any-hover: hover) {
   .dscr-section a:hover {
-    text-decoration: underline;
+    text-decoration: none;
   }
 }
 

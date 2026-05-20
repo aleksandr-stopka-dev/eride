@@ -11,6 +11,8 @@
         <textarea name="message" placeholder="Tell us about your enquiry"></textarea>
     </div>
 
+    <div id="form-result-message"></div>
+
     <div class="partnership__form-footer">
         <button type="submit" class="btn">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

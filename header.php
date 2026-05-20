@@ -4,8 +4,6 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preload" href="<?= get_template_directory_uri(); ?>/assets/images/hero-poster.webp" as="image">
-
     <link rel="preload" href="<?= get_template_directory_uri() ?>/assets/fonts/Archivo/Archivo_Expanded-Light.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="<?= get_template_directory_uri() ?>/assets/fonts/Archivo/Archivo-VariableFont_wdth,wght.woff2" as="font" type="font/woff2" crossorigin>
 

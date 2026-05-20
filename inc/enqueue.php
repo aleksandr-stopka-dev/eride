@@ -16,6 +16,6 @@ add_action( 'wp_enqueue_scripts', function() {
 
     wp_localize_script('main-app', 'wp_data', [
 		'ajax_url' => admin_url('admin-ajax.php'),
-        'nonce'    => wp_create_nonce('ourcart_nonce'),
+        'nonce'    => wp_create_nonce('eride_nonce'),
 	]);
 });

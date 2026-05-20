@@ -21,11 +21,6 @@ h1, h2, h3, h4, h5, h6{
         p:not(:has(strong)), ul, ol{
             opacity: .6;
         }
-        p{
-            p, a, span{
-                opacity: .6;
-            }
-        }
     }
     &.dscr-section-min{
         p:not(:has(strong)), ul, ol{
@@ -34,6 +29,14 @@ h1, h2, h3, h4, h5, h6{
     }
     &.dscr-section-gap-big{
         gap: adapt-vw(24, 50);
+        h3{
+            margin-bottom: calc(adapt-vw(12, 25) * -1);
+        }
+    }
+    h3{
+        margin-bottom: calc(adapt-vw(12, 15) * -1);
+        //Text
+        font-size: adapt-vw(20, 34);
     }
     strong{
         font-weight: 500;
@@ -49,9 +52,10 @@ h1, h2, h3, h4, h5, h6{
         padding-left: 1em;
     }
     a{
+        text-decoration: underline;
         @media (any-hover: hover){
             &:hover{
-                text-decoration: underline;
+                text-decoration: none;
             }
         }
     }
